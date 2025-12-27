@@ -11,4 +11,8 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ControleDeDespesas.Domain\ControleDeDespesas.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
