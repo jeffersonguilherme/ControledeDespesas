@@ -8,9 +8,9 @@
 
 ## 📌 Sobre o Projeto
 
-**Controle de Despesas** é um sistema para gerenciar gastos pessoais, criado com o objetivo de **praticar DDD (Domain-Driven Design), Clean Architecture e acesso a banco de dados com Dapper**.
+**Controle de Despesas** é um sistema para gerenciar gastos pessoais, criado com o objetivo de **praticar DDD (Domain-Driven Design), Clean Architecture, acesso a banco de dados com Dapper e boas práticas de GitHub**.
 
-O projeto segue boas práticas de arquitetura, mantendo **responsabilidades claras por camada** e código limpo e escalável.
+O projeto segue boas práticas de arquitetura, mantendo **responsabilidades claras por camada**, código limpo e escalável, e também **permite treinar versionamento, commits e fluxo de branches no GitHub**.
 
 ---
 
@@ -19,5 +19,5 @@ O projeto segue boas práticas de arquitetura, mantendo **responsabilidades clar
 - **API**: expõe endpoints HTTP. Não contém lógica de negócio nem acesso a banco.  
 - **Application**: orquestra fluxo, mapeia DTOs e chama os Domain Services.  
 - **Domain**: contém entidades, regras de negócio e interfaces de repositórios.  
-- **Infrastructure**: implementa repositórios com Dapper e conexão ao SQL Server.
-
+- **Infrastructure**: implementa repositórios com Dapper e conexão ao SQL Server.  
+- **GitHub**: prática de versionamento, controle de branches e documentação do repositório.
