@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "ZUZBBsbIYeGiINLJAdgcN0f8bym64aJI7dETaIKn+IM=",
+  "Source": "ControleDeDespesas.Api",
+  "BasePath": "_content/ControleDeDespesas.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
