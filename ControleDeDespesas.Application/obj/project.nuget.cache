@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bPbwRbogFoY=",
+  "dgSpecHash": "j2QP4r7RAeo=",
   "success": true,
   "projectFilePath": "C:\\Users\\Jefferson\\Documents\\GitHub\\ControledeDespesas\\ControleDeDespesas.Application\\ControleDeDespesas.Application.csproj",
   "expectedPackageFiles": [
@@ -21,7 +21,7 @@
       "code": "NU1608",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Versão detectada do pacote fora da restrição de dependência: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requer AutoMapper (= 12.0.1), mas a versão AutoMapper 16.0.0 foi resolvida.",
+      "message": "Detected package version outside of dependency constraint: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requires AutoMapper (= 12.0.1) but version AutoMapper 16.0.0 was resolved.",
       "libraryId": "AutoMapper",
       "targetGraphs": [
         "net8.0"
