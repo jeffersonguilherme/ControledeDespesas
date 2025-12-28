@@ -1,13 +1,12 @@
 using ControleDeDespesas.Domain.Models;
 
-namespace ControleDeDespesas.Domain.Repositories.Interfaces;
+namespace ControleDeDespesas.Domain.Services;
 
-public interface ICategoryRepository
+public interface ICategoryService
 {
+    Task AssAsync(Category category);
     Task<Category> GetByIdAsync(Guid id);
     Task<IEnumerable<Category>> GetAllAsync();
-    Task<Category> GetByNameAsync(string name);
-    Task AddAsync(Category category);
     Task UpdateAsync(Category category);
     Task DeleteAsync(Guid id);
 }
