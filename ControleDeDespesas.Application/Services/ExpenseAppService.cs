@@ -41,15 +41,34 @@ public class ExpenseAppService : IExpenseAppService
         }
     }
 
-    public Task<ResponseModel<bool>> DeleteExpenseAsync(Guid id)
+    public async Task<ResponseModel<bool>> DeleteExpenseAsync(Guid id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _service.DeleteAsync(id);
+            return new ResponseModel<bool>
+            {
+              Mensagem = "Despesa excluída com sucesso"  
+            };
+            
+        }catch(ArgumentException ex)
+        {
+            return new ResponseModel<bool>
+            {
+                Mensagem = ex.Message,
+                Status = false
+            };
+        }
     }
 
-    public Task<PagedResponse<ExpenseResponseDto>> GetAllExpenseAsync(int pageNumber, int pageSize)
-    {
-        throw new NotImplementedException();
-    }
+public async Task<(IEnumerable<ExpenseResponseDto> Items, int TotalItems)> GetAllAsync(int pageNumber, int pageSize)
+{
+    var (expenses, totalItems) = await _service.GetAllAsync(pageNumber, pageSize);
+
+    var expensesDto = _mapper.Map<IEnumerable<ExpenseResponseDto>>(expenses);
+
+    return (expensesDto, totalItems);
+}
 
     public Task<PagedResponse<ExpenseResponseDto>> GetByCategoryExpenseAsync(Guid id, int pageNumber, int pageSize)
     {

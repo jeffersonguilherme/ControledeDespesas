@@ -58,20 +58,44 @@ public class ExpenseRepository : IExpenseRepository
        await connection.ExecuteAsync(sql, new{Id = id});
     }
 
-    public async Task<IEnumerable<Expense>> GetAllAsync()
+    public async Task<(IEnumerable<Expense> Items, int TotalItems)> GetAllAsync(int pageNumber, int pageSize)
     {
-        const string sql = @"SELECT * FROM EXPENSE";
+        const string sql = @"SELECT * FROM Expense ORDER BY Date OFFSET @Skip ROWS FETCH NEXT @Take ROWS ONLY";
+        var countSql = @"SELECT COUNT(Id) FROM Expense";
+
+        var paramtersPaged = new
+        {
+            Skip = (pageNumber - 1) * pageSize,
+            Take = pageSize
+        };
 
         using var connection = _context.CreateConnection();
-        return await connection.QueryAsync<Expense>(sql);
+        using var multiConsults = await connection.QueryMultipleAsync($"{countSql};{sql}", paramtersPaged);
+
+        var expenses = await multiConsults.ReadAsync<Expense>();
+        var totalItems = await multiConsults.ReadFirstAsync<int>();
+        return (expenses, totalItems);
     }
 
-    public async Task<IEnumerable<Expense>> GetByCategoryAsync(Guid categoryId)
+    public async Task<(IEnumerable<Expense> Items, int TotalItems)> GetByCategoryAsync(Guid categoryId, int pageNumber, int pageSize)
     {
-        const string sql = @"SELECT * FROM Expense WHERE CategoryId = @CategoryId";
+        const string sql = @"SELECT * FROM Expense WHERE CategoryId = @CategoryId ORDER BY Date DESC OFFSET @Skip ROWS FETCH NEXT @Take ROWS @Take ROWS ONLY";
+        var countSql = @"SELECT COUNT(CategtoryId) FROM Expense";
+
+        var paramtersPaged = new
+        {
+            Skip = (pageNumber -1) * pageSize,
+            Take = pageSize,
+            CategoryId = categoryId
+        };
 
         using var connection = _context.CreateConnection();
-        return await connection.QueryAsync<Expense>(sql, new{CategoryId = categoryId});
+        using var multi = await connection.QueryMultipleAsync($"{countSql};{sql}", paramtersPaged);
+
+        var expenses = await multi.ReadAsync<Expense>();
+        var totalItems = await multi.ReadFirstAsync<int>();
+
+        return (expenses, totalItems);
     }
 
     public async Task<Expense> GetByIdAsync(Guid id)
@@ -80,6 +104,21 @@ public class ExpenseRepository : IExpenseRepository
 
         using var connection = _context.CreateConnection();
         return await connection.QueryFirstOrDefaultAsync<Expense>(sql, new {Id = id});
+    }
+
+    public async Task<decimal> GetTotalExpenseAsync(DateTime startDate, DateTime endDate)
+    {
+        const string sql = @"
+            SELECT COALESCE(SUM(Amount), 0)
+            FROM Expense
+            WHERE Date BETWEEN @StartDate AND @EndDate";
+
+        using var connection = _context.CreateConnection();
+        return await connection.ExecuteScalarAsync<decimal>(sql, new
+        {
+            StartDate = startDate,
+            EndDate = endDate
+        });
     }
 
     public async Task UpdateAsync(Expense expense)

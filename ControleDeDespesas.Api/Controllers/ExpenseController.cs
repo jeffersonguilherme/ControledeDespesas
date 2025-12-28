@@ -24,4 +24,10 @@ public class ExpenseController : ControllerBase
         
         return Ok(response);
     }
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> DeleteExpenseAsync(Guid id)
+    {
+        await _service.DeleteExpenseAsync(id);
+        return Ok("Despensa Excluida com sucesso");
+    }
 }

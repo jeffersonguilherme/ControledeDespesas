@@ -6,7 +6,7 @@ namespace ControleDeDespesas.Application.Interfaces;
 public interface IExpenseAppService
 {
     Task<ResponseModel<ExpenseResponseDto>> AddExpenseAsync(ExpenseCreateDto expenseCreateDto);
-    Task<PagedResponse<ExpenseResponseDto>> GetAllExpenseAsync(int pageNumber, int pageSize);
+    Task<(IEnumerable<ExpenseResponseDto> Items, int TotalItems)> GetAllAsync(int pageNumber, int pageSize);
     Task<ResponseModel<ExpenseResponseDto>> GetByIdExpenseAsync(Guid id);
     Task<PagedResponse<ExpenseResponseDto>> GetByCategoryExpenseAsync(Guid id, int pageNumber, int pageSize);
     Task<ResponseModel<ExpenseUpdateDto>> UpdateExpenseAsync(Guid id, ExpenseUpdateDto expenseUpdateDto);
