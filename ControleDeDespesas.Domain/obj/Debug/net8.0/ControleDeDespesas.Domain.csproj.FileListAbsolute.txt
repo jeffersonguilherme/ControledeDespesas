@@ -1,0 +1,12 @@
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Domain\bin\Debug\net8.0\ControleDeDespesas.Domain.deps.json
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Domain\bin\Debug\net8.0\ControleDeDespesas.Domain.dll
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Domain\bin\Debug\net8.0\ControleDeDespesas.Domain.pdb
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Domain\obj\Debug\net8.0\ControleDeDespesas.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Domain\obj\Debug\net8.0\ControleDeDespesas.Domain.AssemblyInfoInputs.cache
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Domain\obj\Debug\net8.0\ControleDeDespesas.Domain.AssemblyInfo.cs
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Domain\obj\Debug\net8.0\ControleDeDespesas.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Domain\obj\Debug\net8.0\ControleDeDespesas.Domain.sourcelink.json
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Domain\obj\Debug\net8.0\ControleDeDespesas.Domain.dll
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Domain\obj\Debug\net8.0\refint\ControleDeDespesas.Domain.dll
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Domain\obj\Debug\net8.0\ControleDeDespesas.Domain.pdb
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Domain\obj\Debug\net8.0\ref\ControleDeDespesas.Domain.dll

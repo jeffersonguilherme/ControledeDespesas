@@ -25,14 +25,14 @@ public class ExpenseService : IExpenseService
         await _repository.DeleteAsync(id);
     }
 
-    public async Task<IEnumerable<Expense>> GetAllAsync()
+    public async Task<(IEnumerable<Expense> Items, int TotalItems)> GetAllAsync(int pageNumber, int pageSize)
     {
-        return await _repository.GetAllAsync();
+        return await _repository.GetAllAsync(pageNumber, pageSize);
     }
 
-    public async Task<IEnumerable<Expense>> GetByCategoryAsync(Guid categoryId)
+    public async Task<(IEnumerable<Expense> Items, int TotalItems)> GetByCategoryAsync(Guid categoryId, int pageNumber, int pageSize)
     {
-        return await _repository.GetByCategoryAsync(categoryId);
+        return await _repository.GetByCategoryAsync(categoryId, pageNumber, pageSize);
     }
 
     public async Task<Expense> GetByIdAsyn(Guid id)
@@ -42,14 +42,10 @@ public class ExpenseService : IExpenseService
 
     public async Task<decimal> GetTotalExpenseAsync(DateTime startDate, DateTime endDate)
     {
-        var expenses = await _repository.GetAllAsync();
-        decimal total = 0;
-        foreach(var exp in expenses)
-        {
-            if(exp.Date >= startDate && exp.Date <= endDate)
-            total += exp.Amount;
-        }
-        return total;
+        if (startDate > endDate)
+            throw new ArgumentException("Data inicial não pode ser maior que a data final");
+
+        return await _repository.GetTotalExpenseAsync(startDate, endDate);
     }
 
     public async Task UpdateAsync(Expense expense)

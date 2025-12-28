@@ -1,0 +1,16 @@
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\bin\Debug\net8.0\ControleDeDespesas.Application.deps.json
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\bin\Debug\net8.0\ControleDeDespesas.Application.dll
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\bin\Debug\net8.0\ControleDeDespesas.Application.pdb
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\bin\Debug\net8.0\ControleDeDespesas.Domain.dll
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\bin\Debug\net8.0\ControleDeDespesas.Domain.pdb
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\obj\Debug\net8.0\ControleDeDespesas.Application.csproj.AssemblyReference.cache
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\obj\Debug\net8.0\ControleDeDespesas.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\obj\Debug\net8.0\ControleDeDespesas.Application.AssemblyInfoInputs.cache
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\obj\Debug\net8.0\ControleDeDespesas.Application.AssemblyInfo.cs
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\obj\Debug\net8.0\ControleDeDespesas.Application.csproj.CoreCompileInputs.cache
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\obj\Debug\net8.0\ControleDeDespesas.Application.sourcelink.json
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\obj\Debug\net8.0\Controle.69AB2178.Up2Date
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\obj\Debug\net8.0\ControleDeDespesas.Application.dll
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\obj\Debug\net8.0\refint\ControleDeDespesas.Application.dll
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\obj\Debug\net8.0\ControleDeDespesas.Application.pdb
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Application\obj\Debug\net8.0\ref\ControleDeDespesas.Application.dll

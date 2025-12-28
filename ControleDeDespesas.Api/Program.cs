@@ -1,5 +1,9 @@
+using ControleDeDespesas.Application.Interfaces;
+using ControleDeDespesas.Application.Services;
+using ControleDeDespesas.Domain.Repositories.Interfaces;
 using ControleDeDespesas.Domain.Services;
 using ControleDeDespesas.Infrastructure.Data;
+using ControleDeDespesas.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,10 +15,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
 
 builder.Services.AddScoped<IExpenseService, ExpenseService>();
+builder.Services.AddScoped<IExpenseAppService, ExpenseAppService>();
+builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 
 builder.Services.AddScoped<IPaymentMethodService, PaymentMethodService>();
+builder.Services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
 
 builder.Services.AddScoped<DapperContext>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

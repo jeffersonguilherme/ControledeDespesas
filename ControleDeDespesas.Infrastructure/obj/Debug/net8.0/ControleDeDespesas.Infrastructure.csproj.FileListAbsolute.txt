@@ -1,0 +1,16 @@
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\bin\Debug\net8.0\ControleDeDespesas.Infrastructure.deps.json
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\bin\Debug\net8.0\ControleDeDespesas.Infrastructure.dll
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\bin\Debug\net8.0\ControleDeDespesas.Infrastructure.pdb
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\bin\Debug\net8.0\ControleDeDespesas.Domain.dll
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\bin\Debug\net8.0\ControleDeDespesas.Domain.pdb
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\obj\Debug\net8.0\ControleDeDespesas.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\obj\Debug\net8.0\ControleDeDespesas.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\obj\Debug\net8.0\ControleDeDespesas.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\obj\Debug\net8.0\ControleDeDespesas.Infrastructure.AssemblyInfo.cs
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\obj\Debug\net8.0\ControleDeDespesas.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\obj\Debug\net8.0\ControleDeDespesas.Infrastructure.sourcelink.json
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\obj\Debug\net8.0\Controle.C52B156F.Up2Date
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\obj\Debug\net8.0\ControleDeDespesas.Infrastructure.dll
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\obj\Debug\net8.0\refint\ControleDeDespesas.Infrastructure.dll
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\obj\Debug\net8.0\ControleDeDespesas.Infrastructure.pdb
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\obj\Debug\net8.0\ref\ControleDeDespesas.Infrastructure.dll

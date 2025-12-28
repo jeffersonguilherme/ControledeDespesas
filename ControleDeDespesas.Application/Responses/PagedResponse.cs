@@ -2,7 +2,7 @@ namespace ControleDeDespesas.Application.Responses;
 
 public class PagedResponse<T>
 {
-    public IEnumerable<T>? Dados { get; set; } = new List<T>();
+    public IEnumerable<T>? Dados { get; set; } = Enumerable.Empty<T>();
     public int PageNumber { get; set; }
     public int PageSize { get; set; }
     public int TotalItems { get; set; }
