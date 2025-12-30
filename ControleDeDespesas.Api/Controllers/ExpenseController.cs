@@ -60,7 +60,7 @@ public class ExpenseController : ControllerBase
         return Ok(expense);
     }
 
-    [HttpPost("{id:guid}")]
+    [HttpPut("{id:guid}")]
     public async Task<IActionResult> UpdateExpenseAsync(Guid id, ExpenseUpdateDto expenseUpdateDto)
     {
         var expense = await _service.UpdateExpenseAsync(id, expenseUpdateDto);
