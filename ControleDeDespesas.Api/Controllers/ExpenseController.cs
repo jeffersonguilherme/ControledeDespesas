@@ -24,6 +24,7 @@ public class ExpenseController : ControllerBase
         
         return Ok(response);
     }
+
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteExpenseAsync(Guid id)
     {
@@ -40,6 +41,7 @@ public class ExpenseController : ControllerBase
         var expenses = await _service.GetAllAsync(pageNumber, pageSize);
         return Ok(expenses);
     }
+
     [HttpGet("{categoryId:guid}/expenses")]
     public async Task<IActionResult> GetByCategoryExpenseAsync(
         Guid categoryId,
@@ -63,5 +65,15 @@ public class ExpenseController : ControllerBase
     {
         var expense = await _service.UpdateExpenseAsync(id, expenseUpdateDto);
         return Ok(expense);
+    }
+
+    [HttpGet("valorTotal")]
+    public async Task<IActionResult> GetTotalExpensesAsync(
+        [FromQuery] DateTime startDate,
+        [FromQuery] DateTime endDate
+    )
+    {
+        var total = await _service.GetTotalExpenseAsync(startDate, endDate);
+        return Ok(total);
     }
 }
