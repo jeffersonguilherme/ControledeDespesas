@@ -61,7 +61,7 @@ public class ExpenseAppService : IExpenseAppService
         }
     }
 
-public async Task<PagedResponse<ExpenseResponseDto>> GetAllAsync(int pageNumber, int pageSize)
+    public async Task<PagedResponse<ExpenseResponseDto>> GetAllAsync(int pageNumber, int pageSize)
 {
     var (expenses, totalItems) = await _service.GetAllAsync(pageNumber, pageSize);
 
@@ -97,6 +97,11 @@ public async Task<PagedResponse<ExpenseResponseDto>> GetAllAsync(int pageNumber,
           Dados = expenseDto,
           Mensagem = "Despensa obtida com sucesso."
         };
+    }
+
+    public Task<PagedResponse<ExpenseResponseDto>> GetByPaymentMethodExpenseAsync(Guid PaymentId, int pageNumber, int pageSize)
+    {
+        throw new NotImplementedException();
     }
 
     public async Task<ResponseModel<ExpenseResponseDto>> UpdateExpenseAsync(Guid id, ExpenseUpdateDto expenseUpdateDto)

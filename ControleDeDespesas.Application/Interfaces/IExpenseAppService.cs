@@ -9,6 +9,7 @@ public interface IExpenseAppService
     Task<PagedResponse<ExpenseResponseDto>> GetAllAsync(int pageNumber, int pageSize);
     Task<ResponseModel<ExpenseResponseDto>> GetByIdExpenseAsync(Guid id);
     Task<PagedResponse<ExpenseResponseDto>> GetByCategoryExpenseAsync(Guid id, int pageNumber, int pageSize);
+    Task<PagedResponse<ExpenseResponseDto>> GetByPaymentMethodExpenseAsync(Guid PaymentId, int pageNumber, int pageSize);
     Task<ResponseModel<ExpenseResponseDto>> UpdateExpenseAsync(Guid id, ExpenseUpdateDto expenseUpdateDto);
     Task<ResponseModel<bool>> DeleteExpenseAsync(Guid id);
 }
