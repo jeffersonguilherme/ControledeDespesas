@@ -104,6 +104,16 @@ public class ExpenseAppService : IExpenseAppService
         throw new NotImplementedException();
     }
 
+    public async Task<ResponseModel<decimal>> GetTotalExpenseAsync(DateTime startDate, DateTime endDate)
+    {
+        var coutTotal = await _service.GetTotalExpenseAsync(startDate, endDate);
+        return new ResponseModel<decimal>
+        {
+          Dados = coutTotal,
+          Mensagem = "Valor total da despensas"  
+        };
+    }
+
     public async Task<ResponseModel<ExpenseResponseDto>> UpdateExpenseAsync(Guid id, ExpenseUpdateDto expenseUpdateDto)
     {
         var expense = await _service.GetByIdAsyn(id);
