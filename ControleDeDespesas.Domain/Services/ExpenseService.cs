@@ -40,9 +40,9 @@ public class ExpenseService : IExpenseService
        return await _repository.GetByIdAsync(id);
     }
 
-    public Task<(IEnumerable<Expense> Items, int TotalItems)> GetByPaymentMethodAsync(Guid paymentId, int pageNumber, int pageSize)
+    public async Task<(IEnumerable<Expense> Items, int TotalItems)> GetByPaymentMethodAsync(Guid paymentId, int pageNumber, int pageSize)
     {
-        throw new NotImplementedException();
+        return await _repository.GetByPaymentMethodAsync(paymentId, pageNumber, pageSize);
     }
 
     public async Task<decimal> GetTotalExpenseAsync(DateTime startDate, DateTime endDate)

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ControleDeDespesas.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3fab313831b9832155600ddd93f486f3ac903508")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+140f4e9f1ffb6a8092464f78d9dfa8292ae84e90")]
 [assembly: System.Reflection.AssemblyProductAttribute("ControleDeDespesas.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ControleDeDespesas.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

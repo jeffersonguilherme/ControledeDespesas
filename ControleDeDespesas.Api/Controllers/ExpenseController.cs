@@ -76,4 +76,15 @@ public class ExpenseController : ControllerBase
         var total = await _service.GetTotalExpenseAsync(startDate, endDate);
         return Ok(total);
     }
+
+    [HttpGet("{paymentMethodId:guid}/expense")]
+    public async Task<IActionResult> GetByPaymentMethodExpenseAsync(
+        Guid paymentMethodId,
+        [FromQuery] int pageNumber = 1,
+        [FromQuery] int pageSize = 2
+    )
+    {
+        var responses = await _service.GetByPaymentMethodExpenseAsync(paymentMethodId, pageNumber, pageSize);
+        return Ok(responses);
+    }
 }
