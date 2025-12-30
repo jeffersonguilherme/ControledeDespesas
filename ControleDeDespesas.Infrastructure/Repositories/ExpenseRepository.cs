@@ -106,9 +106,25 @@ public class ExpenseRepository : IExpenseRepository
         return await connection.QueryFirstOrDefaultAsync<Expense>(sql, new {Id = id});
     }
 
-    public Task<(IEnumerable<Expense> Items, int TotalItems)> GetByPaymentMethodAsync(Guid paymentId, int pageNumber, int pageSize)
+    public async Task<(IEnumerable<Expense> Items, int TotalItems)> GetByPaymentMethodAsync(Guid paymentId, int pageNumber, int pageSize)
     {
-        throw new NotImplementedException();
+        var countSql = @"SELECT COUNT(PaymentMethodId) FROM Expense WHERE PaymentMethodId = @PaymentMethodId";
+        var sql = @"SELECT * FROM Expense WHERE PaymentMethodId = @PaymentMethodId ORDER BY Date DESC OFFSET @Skip ROWS FETCH NEXT @Take ROWS ONLY";
+
+        var paramtersPaged = new
+        {
+            Skip = (pageNumber - 1) * pageSize,
+            Take = pageSize,
+            PaymentMethodId = paymentId
+        };
+
+        using var connection = _context.CreateConnection();
+        using var multi = await connection.QueryMultipleAsync($"{countSql};{sql}", paramtersPaged);
+
+        var totalItems = await multi.ReadFirstAsync<int>();
+        var expenses = await multi.ReadAsync<Expense>();
+        return (expenses, totalItems);
+
     }
 
     public async Task<decimal> GetTotalExpenseAsync(DateTime startDate, DateTime endDate)

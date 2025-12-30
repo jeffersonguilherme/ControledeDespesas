@@ -99,9 +99,19 @@ public class ExpenseAppService : IExpenseAppService
         };
     }
 
-    public Task<PagedResponse<ExpenseResponseDto>> GetByPaymentMethodExpenseAsync(Guid PaymentId, int pageNumber, int pageSize)
+    public async Task<PagedResponse<ExpenseResponseDto>> GetByPaymentMethodExpenseAsync(Guid paymentId, int pageNumber, int pageSize)
     {
-        throw new NotImplementedException();
+        var (expenses, totalItems) = await _service.GetByPaymentMethodAsync(paymentId, pageNumber, pageSize);
+
+        var expenseDto = _mapper.Map<IEnumerable<ExpenseResponseDto>>(expenses);
+
+        return new PagedResponse<ExpenseResponseDto>(
+            expenseDto,
+            pageNumber,
+            pageSize,
+            totalItems
+        );
+
     }
 
     public async Task<ResponseModel<decimal>> GetTotalExpenseAsync(DateTime startDate, DateTime endDate)
