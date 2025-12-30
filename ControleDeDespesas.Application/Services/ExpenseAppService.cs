@@ -61,27 +61,64 @@ public class ExpenseAppService : IExpenseAppService
         }
     }
 
-public async Task<(IEnumerable<ExpenseResponseDto> Items, int TotalItems)> GetAllAsync(int pageNumber, int pageSize)
+public async Task<PagedResponse<ExpenseResponseDto>> GetAllAsync(int pageNumber, int pageSize)
 {
     var (expenses, totalItems) = await _service.GetAllAsync(pageNumber, pageSize);
 
     var expensesDto = _mapper.Map<IEnumerable<ExpenseResponseDto>>(expenses);
 
-    return (expensesDto, totalItems);
+    return new PagedResponse<ExpenseResponseDto>(
+        expensesDto,
+        pageNumber,
+        pageSize,
+        totalItems
+    );
 }
 
-    public Task<PagedResponse<ExpenseResponseDto>> GetByCategoryExpenseAsync(Guid id, int pageNumber, int pageSize)
+    public async Task<PagedResponse<ExpenseResponseDto>> GetByCategoryExpenseAsync(Guid id, int pageNumber, int pageSize)
     {
-        throw new NotImplementedException();
+       var (expenses, totalItems) = await _service.GetByCategoryAsync(id, pageNumber, pageSize);
+
+       var expensesDto = _mapper.Map<IEnumerable<ExpenseResponseDto>>(expenses);
+
+       return new PagedResponse<ExpenseResponseDto>(
+        expensesDto,
+        pageNumber,
+        pageSize,
+        totalItems
+       );
     }
 
-    public Task<ResponseModel<ExpenseResponseDto>> GetByIdExpenseAsync(Guid id)
+    public async Task<ResponseModel<ExpenseResponseDto>> GetByIdExpenseAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var expense = await _service.GetByIdAsyn(id);
+        var expenseDto = _mapper.Map<ExpenseResponseDto>(expense);
+        return new ResponseModel<ExpenseResponseDto>{
+          Dados = expenseDto,
+          Mensagem = "Despensa obtida com sucesso."
+        };
     }
 
-    public Task<ResponseModel<ExpenseUpdateDto>> UpdateExpenseAsync(Guid id, ExpenseUpdateDto expenseUpdateDto)
+    public async Task<ResponseModel<ExpenseResponseDto>> UpdateExpenseAsync(Guid id, ExpenseUpdateDto expenseUpdateDto)
     {
-        throw new NotImplementedException();
+        var expense = await _service.GetByIdAsyn(id);
+        if(expense == null)
+        {         
+            return new ResponseModel<ExpenseResponseDto>
+            {
+                Status = false,
+                Mensagem = "Despesa não econtrada"
+            };
+        }
+        _mapper.Map(expenseUpdateDto, expense);
+        await _service.UpdateAsync(expense);
+
+        var expenseDto = _mapper.Map<ExpenseResponseDto>(expense);
+
+        return new ResponseModel<ExpenseResponseDto>
+        {
+            Dados = expenseDto,
+            Mensagem = "Despensa atualizada com sucesso!"
+        };
     }
 }

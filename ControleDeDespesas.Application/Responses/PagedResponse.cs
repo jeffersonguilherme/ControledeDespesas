@@ -7,7 +7,7 @@ public class PagedResponse<T>
     public int PageSize { get; set; }
     public int TotalItems { get; set; }
     public int TotalPages { get; set; }
-    public bool HasNexPage => PageNumber < TotalPages;
+    public bool HasNextPage => PageNumber < TotalPages;
     public bool HasPreviousPage => PageNumber > 1;
 
     public PagedResponse(){}

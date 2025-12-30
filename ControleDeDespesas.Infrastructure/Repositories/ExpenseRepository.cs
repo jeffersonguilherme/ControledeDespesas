@@ -72,15 +72,15 @@ public class ExpenseRepository : IExpenseRepository
         using var connection = _context.CreateConnection();
         using var multiConsults = await connection.QueryMultipleAsync($"{countSql};{sql}", paramtersPaged);
 
-        var expenses = await multiConsults.ReadAsync<Expense>();
         var totalItems = await multiConsults.ReadFirstAsync<int>();
+        var expenses = await multiConsults.ReadAsync<Expense>();
         return (expenses, totalItems);
     }
 
     public async Task<(IEnumerable<Expense> Items, int TotalItems)> GetByCategoryAsync(Guid categoryId, int pageNumber, int pageSize)
     {
-        const string sql = @"SELECT * FROM Expense WHERE CategoryId = @CategoryId ORDER BY Date DESC OFFSET @Skip ROWS FETCH NEXT @Take ROWS @Take ROWS ONLY";
-        var countSql = @"SELECT COUNT(CategtoryId) FROM Expense";
+        const string sql = @"SELECT * FROM Expense WHERE CategoryId = @CategoryId ORDER BY Date DESC OFFSET @Skip ROWS FETCH NEXT @Take ROWS ONLY";
+        var countSql = @"SELECT COUNT(CategoryId) FROM Expense WHERE CategoryId = @CategoryId";
 
         var paramtersPaged = new
         {
@@ -92,8 +92,8 @@ public class ExpenseRepository : IExpenseRepository
         using var connection = _context.CreateConnection();
         using var multi = await connection.QueryMultipleAsync($"{countSql};{sql}", paramtersPaged);
 
-        var expenses = await multi.ReadAsync<Expense>();
         var totalItems = await multi.ReadFirstAsync<int>();
+        var expenses = await multi.ReadAsync<Expense>();
 
         return (expenses, totalItems);
     }
