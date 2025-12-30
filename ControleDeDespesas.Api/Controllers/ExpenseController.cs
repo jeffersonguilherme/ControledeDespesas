@@ -30,4 +30,38 @@ public class ExpenseController : ControllerBase
         await _service.DeleteExpenseAsync(id);
         return Ok("Despensa Excluida com sucesso");
     }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllExpensesAsync(
+        [FromQuery] int pageNumber = 1,
+        [FromQuery] int pageSize = 3
+    )
+    {
+        var expenses = await _service.GetAllAsync(pageNumber, pageSize);
+        return Ok(expenses);
+    }
+    [HttpGet("{categoryId:guid}/expenses")]
+    public async Task<IActionResult> GetByCategoryExpenseAsync(
+        Guid categoryId,
+        [FromQuery] int pageNumber = 1,
+        [FromQuery] int  pageSize = 3
+    )
+    {
+        var expenses = await _service.GetByCategoryExpenseAsync(categoryId, pageNumber, pageSize);
+        return Ok(expenses);
+    }
+
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetByIdExpenseAsync(Guid id)
+    {
+        var expense = await _service.GetByIdExpenseAsync(id);
+        return Ok(expense);
+    }
+
+    [HttpPost("{id:guid}")]
+    public async Task<IActionResult> UpdateExpenseAsync(Guid id, ExpenseUpdateDto expenseUpdateDto)
+    {
+        var expense = await _service.UpdateExpenseAsync(id, expenseUpdateDto);
+        return Ok(expense);
+    }
 }
