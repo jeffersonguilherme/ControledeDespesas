@@ -10,5 +10,6 @@ public interface IExpenseService
     Task UpdateAsync(Expense expense);
     Task DeleteAsync(Guid id);
     Task<(IEnumerable<Expense> Items, int TotalItems)> GetByCategoryAsync(Guid categoryId, int pageNumber, int pageSize);
+    Task<(IEnumerable<Expense> Items, int TotalItems)> GetByPaymentMethodAsync(Guid paymentId, int pageNumber, int pageSize); 
     Task<decimal> GetTotalExpenseAsync(DateTime startDate, DateTime endDate);
 }

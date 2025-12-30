@@ -106,6 +106,11 @@ public class ExpenseRepository : IExpenseRepository
         return await connection.QueryFirstOrDefaultAsync<Expense>(sql, new {Id = id});
     }
 
+    public Task<(IEnumerable<Expense> Items, int TotalItems)> GetByPaymentMethodAsync(Guid paymentId, int pageNumber, int pageSize)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<decimal> GetTotalExpenseAsync(DateTime startDate, DateTime endDate)
     {
         const string sql = @"
