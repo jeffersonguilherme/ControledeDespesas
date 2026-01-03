@@ -31,7 +31,7 @@ public class ExpenseAppService : IExpenseAppService
                 Dados = expenseDto,
                 Mensagem = "Despesa criada com sucesso"
             };
-        }catch(ArgumentException ex)
+        }catch(InvalidOperationException ex)
         {
             return new ResponseModel<ExpenseResponseDto>
             {
@@ -51,7 +51,7 @@ public class ExpenseAppService : IExpenseAppService
               Mensagem = "Despesa excluída com sucesso"  
             };
             
-        }catch(ArgumentException ex)
+        }catch(InvalidOperationException ex)
         {
             return new ResponseModel<bool>
             {
@@ -91,12 +91,22 @@ public class ExpenseAppService : IExpenseAppService
 
     public async Task<ResponseModel<ExpenseResponseDto>> GetByIdExpenseAsync(Guid id)
     {
-        var expense = await _service.GetByIdAsyn(id);
+        try
+        {
+            var expense = await _service.GetByIdAsyn(id);
         var expenseDto = _mapper.Map<ExpenseResponseDto>(expense);
         return new ResponseModel<ExpenseResponseDto>{
           Dados = expenseDto,
           Mensagem = "Despensa obtida com sucesso."
         };
+        }catch(InvalidOperationException ex)
+        {
+            return new ResponseModel<ExpenseResponseDto>
+            {
+                Mensagem = ex.Message,
+                Status = false
+            };
+        }
     }
 
     public async Task<PagedResponse<ExpenseResponseDto>> GetByPaymentMethodExpenseAsync(Guid paymentId, int pageNumber, int pageSize)
@@ -116,16 +126,28 @@ public class ExpenseAppService : IExpenseAppService
 
     public async Task<ResponseModel<decimal>> GetTotalExpenseAsync(DateTime startDate, DateTime endDate)
     {
+        try
+        {
         var coutTotal = await _service.GetTotalExpenseAsync(startDate, endDate);
         return new ResponseModel<decimal>
         {
           Dados = coutTotal,
           Mensagem = "Valor total da despensas"  
         };
+        }catch(InvalidOperationException ex)
+        {
+            return new ResponseModel<decimal>
+            {
+                Mensagem = ex.Message,
+                Status = false
+            };
+        }
+
     }
 
     public async Task<ResponseModel<ExpenseResponseDto>> UpdateExpenseAsync(Guid id, ExpenseUpdateDto expenseUpdateDto)
     {
+        try{
         var expense = await _service.GetByIdAsyn(id);
         if(expense == null)
         {         
@@ -145,5 +167,13 @@ public class ExpenseAppService : IExpenseAppService
             Dados = expenseDto,
             Mensagem = "Despensa atualizada com sucesso!"
         };
+        }catch(InvalidOperationException ex)
+        {
+            return new ResponseModel<ExpenseResponseDto>
+            {
+                Mensagem = ex.Message,
+                Status = false
+            };
+        }
     }
 }
