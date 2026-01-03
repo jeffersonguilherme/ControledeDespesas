@@ -4,9 +4,9 @@ namespace ControleDeDespesas.Domain.Services;
 
 public interface ICategoryService
 {
-    Task AssAsync(Category category);
+    Task AddAsync(Category category);
     Task<Category> GetByIdAsync(Guid id);
-    Task<IEnumerable<Category>> GetAllAsync();
+    Task<(IEnumerable<Category> Items, int TotalItems)> GetAllAsync(int pageNumber, int pageSize);
     Task UpdateAsync(Category category);
     Task DeleteAsync(Guid id);
 }

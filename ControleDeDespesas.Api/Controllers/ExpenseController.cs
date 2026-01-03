@@ -25,11 +25,11 @@ public class ExpenseController : ControllerBase
         return Ok(response);
     }
 
-    [HttpDelete("{id:guid}")]
-    public async Task<IActionResult> DeleteExpenseAsync(Guid id)
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetByIdExpenseAsync(Guid id)
     {
-        await _service.DeleteExpenseAsync(id);
-        return Ok("Despensa Excluida com sucesso");
+        var expense = await _service.GetByIdExpenseAsync(id);
+        return Ok(expense);
     }
 
     [HttpGet]
@@ -53,18 +53,15 @@ public class ExpenseController : ControllerBase
         return Ok(expenses);
     }
 
-    [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetByIdExpenseAsync(Guid id)
+    [HttpGet("{paymentMethodId:guid}/expense")]
+    public async Task<IActionResult> GetByPaymentMethodExpenseAsync(
+        Guid paymentMethodId,
+        [FromQuery] int pageNumber = 1,
+        [FromQuery] int pageSize = 2
+    )
     {
-        var expense = await _service.GetByIdExpenseAsync(id);
-        return Ok(expense);
-    }
-
-    [HttpPut("{id:guid}")]
-    public async Task<IActionResult> UpdateExpenseAsync(Guid id, ExpenseUpdateDto expenseUpdateDto)
-    {
-        var expense = await _service.UpdateExpenseAsync(id, expenseUpdateDto);
-        return Ok(expense);
+        var responses = await _service.GetByPaymentMethodExpenseAsync(paymentMethodId, pageNumber, pageSize);
+        return Ok(responses);
     }
 
     [HttpGet("valorTotal")]
@@ -77,14 +74,17 @@ public class ExpenseController : ControllerBase
         return Ok(total);
     }
 
-    [HttpGet("{paymentMethodId:guid}/expense")]
-    public async Task<IActionResult> GetByPaymentMethodExpenseAsync(
-        Guid paymentMethodId,
-        [FromQuery] int pageNumber = 1,
-        [FromQuery] int pageSize = 2
-    )
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> UpdateExpenseAsync(Guid id, ExpenseUpdateDto expenseUpdateDto)
     {
-        var responses = await _service.GetByPaymentMethodExpenseAsync(paymentMethodId, pageNumber, pageSize);
-        return Ok(responses);
+        var expense = await _service.UpdateExpenseAsync(id, expenseUpdateDto);
+        return Ok(expense);
+    }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> DeleteExpenseAsync(Guid id)
+    {
+        await _service.DeleteExpenseAsync(id);
+        return Ok("Despensa Excluida com sucesso");
     }
 }
