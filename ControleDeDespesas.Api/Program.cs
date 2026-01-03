@@ -25,6 +25,7 @@ builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 
 builder.Services.AddScoped<IPaymentMethodService, PaymentMethodService>();
 builder.Services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
+builder.Services.AddScoped<IPaymentMethodAppService, PaymentMethodAppService>();
 
 builder.Services.AddScoped<DapperContext>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
