@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "ZUZBBsbIYeGiINLJAdgcN0f8bym64aJI7dETaIKn+IM=",
-  "Source": "ControleDeDespesas.Api",
-  "BasePath": "_content/ControleDeDespesas.Api",
+  "Hash": "G+E1MqAEog7cGgn5mD1omjO6Z1NgAuaTRtx2MQCNhRs=",
+  "Source": "ControleDeDespesas.API",
+  "BasePath": "_content/ControleDeDespesas.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

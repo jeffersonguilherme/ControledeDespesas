@@ -84,4 +84,4 @@ C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Api\bi
 C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Api\bin\Debug\net8.0\ControleDeDespesas.Infrastructure.pdb
 C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Api\bin\Debug\net8.0\ControleDeDespesas.Domain.pdb
 C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Api\obj\Debug\net8.0\ControleDeDespesas.API.sourcelink.json
-C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Api\obj\Debug\net8.0\Controle.3F305F17.Up2Date
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.API\obj\Debug\net8.0\Controle.BF50DF37.Up2Date

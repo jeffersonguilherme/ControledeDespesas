@@ -12,7 +12,7 @@ public class CategoryService : ICategoryService
         _repository = repository;
     }
 
-    public async Task AssAsync(Category category)
+    public async Task AddAsync(Category category)
     {
         var existing = await _repository.GetByNameAsync(category.Name);
         if(existing != null)
@@ -23,21 +23,33 @@ public class CategoryService : ICategoryService
 
     public async Task DeleteAsync(Guid id)
     {
+        var existing = await _repository.GetByIdAsync(id);
+        if(existing == null)
+            throw new InvalidOperationException("Categoria não encontrada");
+
         await _repository.DeleteAsync(id);
     }
 
-    public async Task<IEnumerable<Category>> GetAllAsync()
+    public async Task<(IEnumerable<Category> Items, int TotalItems)> GetAllAsync(int pageNumber, int pageSize)
     {
-        return await _repository.GetAllAsync();
+        return await _repository.GetAllAsync(pageNumber, pageSize);
     }
 
     public async Task<Category> GetByIdAsync(Guid id)
     {
-        return await _repository.GetByIdAsync(id);
+        var existing = await _repository.GetByIdAsync(id);
+        if(existing == null)
+            throw new InvalidOperationException("Categoria não encontrada");
+        
+        return existing;
     }
 
     public async Task UpdateAsync(Category category)
     {
+        var existing = await _repository.GetByIdAsync(category.Id);
+        if(existing == null)
+            throw new InvalidOperationException("Categoria não encontrada");
+            
         await _repository.UpdateAsync(category);
     }
 }
