@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jefferson\\Documents\\GitHub\\ControledeDespesas\\ControleDeDespesas.Api\\ControleDeDespesas.Api.csproj": {}
+    "C:\\Users\\Jefferson\\Documents\\GitHub\\ControledeDespesas\\ControleDeDespesas.API\\ControleDeDespesas.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jefferson\\Documents\\GitHub\\ControledeDespesas\\ControleDeDespesas.Api\\ControleDeDespesas.Api.csproj": {
+    "C:\\Users\\Jefferson\\Documents\\GitHub\\ControledeDespesas\\ControleDeDespesas.API\\ControleDeDespesas.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jefferson\\Documents\\GitHub\\ControledeDespesas\\ControleDeDespesas.Api\\ControleDeDespesas.Api.csproj",
-        "projectName": "ControleDeDespesas.Api",
-        "projectPath": "C:\\Users\\Jefferson\\Documents\\GitHub\\ControledeDespesas\\ControleDeDespesas.Api\\ControleDeDespesas.Api.csproj",
+        "projectUniqueName": "C:\\Users\\Jefferson\\Documents\\GitHub\\ControledeDespesas\\ControleDeDespesas.API\\ControleDeDespesas.API.csproj",
+        "projectName": "ControleDeDespesas.API",
+        "projectPath": "C:\\Users\\Jefferson\\Documents\\GitHub\\ControledeDespesas\\ControleDeDespesas.API\\ControleDeDespesas.API.csproj",
         "packagesPath": "C:\\Users\\Jefferson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jefferson\\Documents\\GitHub\\ControledeDespesas\\ControleDeDespesas.Api\\obj\\",
+        "outputPath": "C:\\Users\\Jefferson\\Documents\\GitHub\\ControledeDespesas\\ControleDeDespesas.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jefferson\\AppData\\Roaming\\NuGet\\NuGet.Config"

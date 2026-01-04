@@ -44,6 +44,14 @@ public class CategoryService : ICategoryService
         return existing;
     }
 
+    public async Task<Category> GetByNameAsync(string name)
+    {
+        var existing = await _repository.GetByNameAsync(name);
+        if(existing == null)
+            throw new InvalidOperationException("Categoria não encontrada");
+        return existing;
+    }
+
     public async Task UpdateAsync(Category category)
     {
         var existing = await _repository.GetByIdAsync(category.Id);

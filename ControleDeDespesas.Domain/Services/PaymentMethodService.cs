@@ -23,6 +23,9 @@ public class PaymentMethodService : IPaymentMethodService
 
     public async Task DeleteAsync(Guid id)
     {
+        var existing = await _repository.GetByIdAsync(id);
+        if(existing == null)
+            throw new InvalidOperationException("Metodo de pagamento não encontrada");
         await _repository.DeleteAsync(id);
     }
 
@@ -33,11 +36,25 @@ public class PaymentMethodService : IPaymentMethodService
 
     public async Task<PaymentMethod> GetByIdAsync(Guid id)
     {
-        return await _repository.GetByIdAsync(id);
+        var existing = await _repository.GetByIdAsync(id);
+        if(existing == null)
+            throw new InvalidOperationException("Forma de pagamento não encontrada");
+        return existing;
+    }
+
+    public async Task<PaymentMethod> GetByNameAsync(string name)
+    {
+        var existing = await _repository.GetByNameAsync(name);
+        if(existing == null)
+            throw new InvalidOperationException("Metodo de pagamento não encontrado");
+        return existing;
     }
 
     public async Task UpdateAsync(PaymentMethod paymentMethod)
     {
+        var existing = await _repository.GetByIdAsync(paymentMethod.Id);
+        if(existing == null)
+            throw new InvalidOperationException("Metodo de pagamento não encontrado");
         await _repository.UpdateAsync(paymentMethod);
     }
 }

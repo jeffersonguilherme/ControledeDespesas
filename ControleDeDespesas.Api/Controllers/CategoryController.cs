@@ -34,6 +34,15 @@ public class CategoriaController : ControllerBase
         return  Ok(response);
     }
 
+    [HttpGet("{name}")]
+    public async Task<IActionResult> GetByNameCategoryAsync(string name)
+    {
+        var response = await _service.GetByNameCategoryAsync(name);
+        if(!response.Status)
+            return BadRequest(response);
+        return Ok(response);
+    }
+
     [HttpGet]
     public async Task<IActionResult> GetAllCategoryAsync(
         [FromQuery] int pageNumber = 1,

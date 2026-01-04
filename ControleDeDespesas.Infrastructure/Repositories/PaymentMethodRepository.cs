@@ -1,37 +1,67 @@
 using ControleDeDespesas.Domain.Models;
 using ControleDeDespesas.Domain.Repositories.Interfaces;
+using ControleDeDespesas.Infrastructure.Data;
+using Dapper;
 
 namespace ControleDeDespesas.Infrastructure.Repositories;
 
 public class PaymentMethodRepository : IPaymentMethodRepository
 {
-    public Task AddAsync(PaymentMethod paymentMethod)
+    private readonly DapperContext _context;
+
+    public PaymentMethodRepository(DapperContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
     }
 
-    public Task DeleteAsync(Guid id)
+    public async Task AddAsync(PaymentMethod paymentMethod)
     {
-        throw new NotImplementedException();
+        const string sql = @"INSERT INTO PaymentMethod(Id, Name) VALUES (@Id, @Name)";
+
+        using var connection = _context.CreateConnection();
+        await connection.ExecuteAsync(sql, new
+        {
+            paymentMethod.Id,
+            paymentMethod.Name
+        });
     }
 
-    public Task<IEnumerable<PaymentMethod>> GetAllAsync()
+    public async Task DeleteAsync(Guid id)
     {
-        throw new NotImplementedException();
+       const string sql = @"DELETE FROM PaymentMethod WHERE Id = @Id";
+
+       using var connection = _context.CreateConnection();
+       await connection.ExecuteAsync(sql, new{Id = id});
     }
 
-    public Task<PaymentMethod> GetByIdAsync(Guid id)
+    public async Task<IEnumerable<PaymentMethod>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        const string sql = @"SELECT * FROM PaymentMethod ORDER BY Name";
+
+        using var connection = _context.CreateConnection();
+        return await connection.QueryAsync<PaymentMethod>(sql);
     }
 
-    public Task<PaymentMethod> GetByNameAsync(string name)
+    public async Task<PaymentMethod> GetByIdAsync(Guid id)
     {
-        throw new NotImplementedException();
+        const string sql = @"SELECT * FROM PaymentMethod WHERE Id = @Id";
+
+        using var connection = _context.CreateConnection();
+        return await connection.QueryFirstOrDefaultAsync<PaymentMethod>(sql, new{Id = id});
     }
 
-    public Task UpdateAsync(PaymentMethod paymentMethod)
+    public async Task<PaymentMethod> GetByNameAsync(string name)
     {
-        throw new NotImplementedException();
+        const string sql = @"SELECT * FROM PaymentMethod WHERE Name = @Name";
+        using var connection = _context.CreateConnection();
+        return await connection.QueryFirstOrDefaultAsync<PaymentMethod>(sql, new{Name = name});
+    }
+
+    public async Task UpdateAsync(PaymentMethod paymentMethod)
+    {
+        const string sql = @"UPDATE PaymentMethod SET Name = @Name WHERE Id = @Id";
+
+        using var connection = _context.CreateConnection();
+        await connection.ExecuteAsync(sql, new{paymentMethod.Id, paymentMethod.Name});
     }
 }
