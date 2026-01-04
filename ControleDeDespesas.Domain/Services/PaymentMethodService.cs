@@ -29,9 +29,9 @@ public class PaymentMethodService : IPaymentMethodService
         await _repository.DeleteAsync(id);
     }
 
-    public async Task<IEnumerable<PaymentMethod>> GetAllAsync()
+    public async Task<(IEnumerable<PaymentMethod> Items, int TotalItems)> GetAllAsync(int pageNumber, int pageSize)
     {
-        return await _repository.GetAllAsync();
+        return await _repository.GetAllAsync(pageNumber, pageSize);
     }
 
     public async Task<PaymentMethod> GetByIdAsync(Guid id)
