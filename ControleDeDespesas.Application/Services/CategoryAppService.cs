@@ -93,6 +93,27 @@ public class CategoryAppService : ICategoryAppService
         }
     }
 
+    public async Task<ResponseModel<CategoryResponseDto>> GetByNameCategoryAsync(string name)
+    {
+        try
+        {
+            var category = await _service.GetByNameAsync(name);
+            var categoryDto = _mapper.Map<CategoryResponseDto>(category);
+            return new ResponseModel<CategoryResponseDto>
+            {
+              Dados = categoryDto,
+              Mensagem = "Categoria obtida com sucesso"  
+            };
+        }catch(InvalidOperationException ex)
+        {
+            return new ResponseModel<CategoryResponseDto>
+            {
+                Mensagem = ex.Message,
+                Status = false
+            };
+        }
+    }
+
     public async Task<ResponseModel<CategoryResponseDto>> UpdateCategoryAsync(Guid id, CategoryUpdateDto categoryUpdateDto)
     {
         try
