@@ -1,6 +1,5 @@
 using AutoMapper;
 using ControleDeDespesas.Application.DTOs.Categories;
-using ControleDeDespesas.Application.DTOs.Expense;
 using ControleDeDespesas.Application.Interfaces;
 using ControleDeDespesas.Application.Responses;
 using ControleDeDespesas.Domain.Models;

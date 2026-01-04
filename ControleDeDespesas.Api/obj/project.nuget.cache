@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1F0kUDp2h9g=",
+  "dgSpecHash": "1MUjDTcRo3k=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jefferson\\Documents\\GitHub\\ControledeDespesas\\ControleDeDespesas.Api\\ControleDeDespesas.Api.csproj",
+  "projectFilePath": "C:\\Users\\Jefferson\\Documents\\GitHub\\ControledeDespesas\\ControleDeDespesas.API\\ControleDeDespesas.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jefferson\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Jefferson\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

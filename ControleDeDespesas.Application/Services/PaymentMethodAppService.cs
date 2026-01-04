@@ -1,14 +1,42 @@
+using AutoMapper;
 using ControleDeDespesas.Application.DTOs.Categories;
 using ControleDeDespesas.Application.Interfaces;
 using ControleDeDespesas.Application.Responses;
+using ControleDeDespesas.Domain.Models;
+using ControleDeDespesas.Domain.Services;
 
 namespace ControleDeDespesas.Application.Services;
 
 public class PaymentMethodAppService : IPaymentMethodAppService
 {
-    public Task<ResponseModel<PaymentMethodResponseDto>> AddPaymentMethodAsync(PaymentMethodCreateDto paymentMethodCreateDto)
+    private readonly IPaymentMethodService _service;
+    private readonly IMapper _mapper;
+    public PaymentMethodAppService(IPaymentMethodService service, IMapper mapper)
     {
-        throw new NotImplementedException();
+        _service = service;
+        _mapper = mapper;
+    }
+
+    public async Task<ResponseModel<PaymentMethodResponseDto>> AddPaymentMethodAsync(PaymentMethodCreateDto paymentMethodCreateDto)
+    {
+        try
+        {
+            var payment = _mapper.Map<PaymentMethod>(paymentMethodCreateDto);
+            await _service.AddAsync(payment);
+            var paymentDto = _mapper.Map<PaymentMethodResponseDto>(payment);
+            return new ResponseModel<PaymentMethodResponseDto>
+            {
+                Dados = paymentDto,
+                Mensagem = "Metoodo de pagamento criado com sucesso"
+            };
+        }catch(InvalidOperationException ex)
+        {
+            return new ResponseModel<PaymentMethodResponseDto>
+            {
+                Mensagem = ex.Message,
+                Status = false
+            };
+        }
     }
 
     public Task<ResponseModel<bool>> DeletePaymentMethodAsync(Guid id)
