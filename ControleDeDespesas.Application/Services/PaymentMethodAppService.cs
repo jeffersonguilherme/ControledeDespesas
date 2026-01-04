@@ -59,14 +59,37 @@ public class PaymentMethodAppService : IPaymentMethodAppService
         }
     }
 
-    public Task<PagedResponse<PaymentMethodResponseDto>> GetAllPaymentMethodIdAsync(int pageNumber, int pageSize)
+    public async Task<PagedResponse<PaymentMethodResponseDto>> GetAllPaymentMethodIdAsync(int pageNumber, int pageSize)
     {
-        throw new NotImplementedException();
+        var (payment, totalItems) = await _service.GetAllAsync(pageNumber, pageSize);
+        var paymentDto = _mapper.Map<IEnumerable<PaymentMethodResponseDto>>(payment);
+        return new PagedResponse<PaymentMethodResponseDto>(
+            paymentDto,
+            pageNumber,
+            pageSize,
+            totalItems
+        );
     }
 
-    public Task<ResponseModel<PaymentMethodResponseDto>> GetByPaymentMethodIdAsync(Guid id)
+    public async Task<ResponseModel<PaymentMethodResponseDto>> GetByPaymentMethodIdAsync(Guid id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var payment = await _service.GetByIdAsync(id);
+            var paymentDto = _mapper.Map<PaymentMethodResponseDto>(payment);
+            return new ResponseModel<PaymentMethodResponseDto>
+            {
+              Dados = paymentDto,
+              Mensagem = "Metodo obtido com sucesso"  
+            };
+        }catch(InvalidOperationException ex)
+        {
+            return new ResponseModel<PaymentMethodResponseDto>
+            {
+                Mensagem = ex.Message,
+                Status = false
+            };
+        }
     }
 
     public Task<ResponseModel<PaymentMethodResponseDto>> UpdatePaymentMethodAsync(Guid id, PaymentMethodUpdateDto paymentMethodUpdateDto)

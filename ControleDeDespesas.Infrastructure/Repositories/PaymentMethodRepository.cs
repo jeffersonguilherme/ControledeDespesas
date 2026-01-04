@@ -34,12 +34,24 @@ public class PaymentMethodRepository : IPaymentMethodRepository
        await connection.ExecuteAsync(sql, new{Id = id});
     }
 
-    public async Task<IEnumerable<PaymentMethod>> GetAllAsync()
+    public async Task<(IEnumerable<PaymentMethod> Items, int TotalItems)> GetAllAsync(int pageNumber, int pageSize)
     {
-        const string sql = @"SELECT * FROM PaymentMethod ORDER BY Name";
+        const string sql = @"SELECT * FROM PaymentMethod ORDER BY Name OFFSET @Skip ROWS FETCH NEXT @Take ROWS ONLY";
+        var countSql = @"SELECT COUNT(Id) FROM PaymentMethod";
+        
+        var parametersPaged = new
+        {
+            Skip = (pageNumber - 1) * pageSize,
+            Take = pageSize
+        };
+
 
         using var connection = _context.CreateConnection();
-        return await connection.QueryAsync<PaymentMethod>(sql);
+        using var multiConsults = await connection.QueryMultipleAsync($"{countSql};{sql}", parametersPaged);
+        
+        var totalItems = await multiConsults.ReadFirstAsync<int>();
+        var payment = await multiConsults.ReadAsync<PaymentMethod>();
+        return (payment, totalItems);
     }
 
     public async Task<PaymentMethod> GetByIdAsync(Guid id)
