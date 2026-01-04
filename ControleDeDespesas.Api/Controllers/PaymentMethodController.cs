@@ -23,7 +23,6 @@ public class PaymentMethodController : ControllerBase
         if(!response.Status)
             return BadRequest(response);
         
-        
         return Ok(response);
     }
 
