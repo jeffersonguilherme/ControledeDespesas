@@ -92,8 +92,27 @@ public class PaymentMethodAppService : IPaymentMethodAppService
         }
     }
 
-    public Task<ResponseModel<PaymentMethodResponseDto>> UpdatePaymentMethodAsync(Guid id, PaymentMethodUpdateDto paymentMethodUpdateDto)
+    public async Task<ResponseModel<PaymentMethodResponseDto>> UpdatePaymentMethodAsync(Guid id, PaymentMethodUpdateDto paymentMethodUpdateDto)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var payment = await _service.GetByIdAsync(id);
+            _mapper.Map(paymentMethodUpdateDto, payment);
+            await _service.UpdateAsync(payment);
+
+            var paymentDto = _mapper.Map<PaymentMethodResponseDto>(payment);
+            return new ResponseModel<PaymentMethodResponseDto>
+            {
+                Dados = paymentDto,
+                Mensagem = "Metodo de pagamento atualizado com sucesso"
+            };
+        }catch(InvalidOperationException ex)
+        {
+            return new ResponseModel<PaymentMethodResponseDto>
+            {
+                Mensagem = ex.Message,
+                Status = false
+            };
+        }
     }
 }
