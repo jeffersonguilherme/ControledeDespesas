@@ -27,7 +27,7 @@ public class PaymentMethodAppService : IPaymentMethodAppService
             return new ResponseModel<PaymentMethodResponseDto>
             {
                 Dados = paymentDto,
-                Mensagem = "Metoodo de pagamento criado com sucesso"
+                Mensagem = "Metodo de pagamento criado com sucesso"
             };
         }catch(InvalidOperationException ex)
         {
@@ -39,9 +39,24 @@ public class PaymentMethodAppService : IPaymentMethodAppService
         }
     }
 
-    public Task<ResponseModel<bool>> DeletePaymentMethodAsync(Guid id)
+    public async Task<ResponseModel<bool>> DeletePaymentMethodAsync(Guid id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _service.DeleteAsync(id);
+            return new ResponseModel<bool>
+            {
+                Mensagem = "Metodo de pagamento excluído com sucesso"
+            };
+            
+        }catch(InvalidOperationException ex)
+        {
+            return new ResponseModel<bool>
+            {
+                Mensagem = ex.Message,
+                Status = false
+            };
+        }
     }
 
     public Task<PagedResponse<PaymentMethodResponseDto>> GetAllPaymentMethodIdAsync(int pageNumber, int pageSize)
