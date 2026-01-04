@@ -14,3 +14,5 @@ C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infras
 C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\obj\Debug\net8.0\refint\ControleDeDespesas.Infrastructure.dll
 C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\obj\Debug\net8.0\ControleDeDespesas.Infrastructure.pdb
 C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\obj\Debug\net8.0\ref\ControleDeDespesas.Infrastructure.dll
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\bin\Debug\net8.0\ControleDeDespesas.Infrastructure.runtimeconfig.json
+C:\Users\Jefferson\Documents\GitHub\ControledeDespesas\ControleDeDespesas.Infrastructure\obj\Debug\net8.0\ControleDeDespesas.Infrastructure.genruntimeconfig.cache
