@@ -2,11 +2,12 @@ using ControleDeDespesas.Application.Interfaces;
 using ControleDeDespesas.Application.Services;
 using ControleDeDespesas.Domain.Repositories.Interfaces;
 using ControleDeDespesas.Domain.Services;
-using ControleDeDespesas.Identity;
+using ControleDeDespesas.Infrastructure.Identity;
 using ControleDeDespesas.Infrastructure.Data;
 using ControleDeDespesas.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ControleDeDespesas.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,13 @@ builder.Services.AddScoped<IPaymentMethodService, PaymentMethodService>();
 builder.Services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
 builder.Services.AddScoped<IPaymentMethodAppService, PaymentMethodAppService>();
 
+builder.Services.AddScoped<IAuthService, AuthService>();
+
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});//Conexão com o banco por meio do Entity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
     //Configurações para deixar a senha menos segura, 
@@ -45,10 +53,6 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     // como base para o usuarios e que estarrei usando Roles
 
 builder.Services.AddScoped<DapperContext>(); // Conexão com banco por meio do Dapper
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});//Conexão com o banco por meio do Entity
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
@@ -62,6 +66,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

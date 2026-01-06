@@ -1,5 +1,4 @@
-using ControleDeDespesas.Domain.Models;
-using ControleDeDespesas.Identity;
+using ControleDeDespesas.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
