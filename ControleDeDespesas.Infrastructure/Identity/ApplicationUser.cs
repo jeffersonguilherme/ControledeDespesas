@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace ControleDeDespesas.Identity;
+namespace ControleDeDespesas.Infrastructure.Identity;
 
 public class ApplicationUser : IdentityUser
 {
-    public Guid DomainUserId {get; set;}
+    public string FullName { get; set; } = string.Empty;
+    public string Cpf { get; set; } = string.Empty;
 }

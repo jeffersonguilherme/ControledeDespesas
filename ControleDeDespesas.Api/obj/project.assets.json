@@ -1702,6 +1702,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "ControleDeDespesas.Application": "1.0.0",
           "ControleDeDespesas.Domain": "1.0.0",
           "Dapper": "2.1.66",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.0",
@@ -1716,7 +1717,10 @@
         },
         "runtime": {
           "bin/placeholder/ControleDeDespesas.Infrastructure.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -4509,6 +4513,7 @@
       "ControleDeDespesas.Application >= 1.0.0",
       "ControleDeDespesas.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.0",
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.0",
       "Swashbuckle.AspNetCore >= 6.6.2"
     ]
@@ -4563,6 +4568,10 @@
         "targetAlias": "net8.0",
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "target": "Package",
+            "version": "[8.0.0, )"
+          },
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "[8.0.0, )"
           },
