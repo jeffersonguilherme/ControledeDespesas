@@ -1,5 +1,6 @@
 using ControleDeDespesas.Application.DTOs.Categories;
 using ControleDeDespesas.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDeDespesas.Api.Controllers;
@@ -26,6 +27,7 @@ public class CategoriaController : ControllerBase
     }
 
     [HttpGet("{id:guid}")]
+    [Authorize]
     public async Task<IActionResult> GetByCategoryIdAsync(Guid id)
     {
         var response = await _service.GetByCategoryIdAsync(id);
@@ -44,6 +46,7 @@ public class CategoriaController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize(Roles = "admin")]
     public async Task<IActionResult> GetAllCategoryAsync(
         [FromQuery] int pageNumber = 1,
         [FromQuery] int pageSize = 10

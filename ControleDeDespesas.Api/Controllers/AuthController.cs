@@ -16,9 +16,28 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register(RegisterUserDto dto)
+    public async Task<ActionResult<AuthResponseDto>> Register([FromBody] RegisterUserDto dto)
     {
-        await _authService.RegisterAsync(dto);
-        return Ok("Usuário criado com sucesso");
+        try
+        {
+            var result = await _authService.RegisterAsync(dto);
+            return Ok(result);
+        }catch(InvalidOperationException ex)
+        {
+            return BadRequest(new {error = ex.Message});
+        }
+    }
+
+    [HttpPost("login")]
+    public async Task<ActionResult<AuthResponseDto>> Login([FromBody] LoginUserDto dto)
+    {
+        try
+        {
+            var result = await _authService.LoginAsync(dto);
+            return Ok(result);
+        }catch (InvalidOperationException ex)
+        {
+            return Unauthorized(new {error = ex.Message});
+        }
     }
 }
