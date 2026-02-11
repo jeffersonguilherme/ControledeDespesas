@@ -4,6 +4,6 @@ namespace ControleDeDespesas.Application.Interfaces;
 
 public interface IAuthService
 {
-    Task RegisterAsync(RegisterUserDto registerUserDto);
-    Task<LoginResponseDto> LoginAsync(LoginDto loginDto);
+    Task<AuthResponseDto> RegisterAsync(RegisterUserDto dto);
+    Task<AuthResponseDto> LoginAsync(LoginUserDto dto);
 }

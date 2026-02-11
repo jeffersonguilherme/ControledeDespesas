@@ -1,11 +1,13 @@
 using ControleDeDespesas.Application.DTOs.Expense;
 using ControleDeDespesas.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDeDespesas.Api.Controllers;
 
-[Route("api/[controller]")]
 [ApiController]
+[Route("api/[controller]")]
+[Authorize(Roles = "USER")]
 public class ExpenseController : ControllerBase
 {
     private readonly IExpenseAppService _service;
@@ -16,6 +18,7 @@ public class ExpenseController : ControllerBase
     }
 
     [HttpPost]
+
     public async Task<IActionResult> AddExpenseAsync(ExpenseCreateDto expenseCreateDto)
     {
         var response = await _service.AddExpenseAsync(expenseCreateDto);
